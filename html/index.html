@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beta</title>
+</head>
+<body>
+<div class="container">
+    <h1>List of products</h1>
+    <ul>
+       <!--js creates list here-->
+    </ul>
+    <div class="forms">
+        <div class="form-wrapper">
+            <h3>Add Products</h3>
+            <form  action="http://localhost:3000/shoppingCart"
+                   method="post"
+                   class="light-border"
+                   enctype="multipart/form-data"
+                   id="addItemForm">
+                <input class="light-border" type="text" name="name" placeholder="Name" required>
+                <input class="light-border" type="number" name="maara" placeholder="Maara" required>
+               <button class="light-border" type="submit">ADD</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="../js/main.js"></script>
+
+</body>
+</html>
