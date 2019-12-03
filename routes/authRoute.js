@@ -11,7 +11,7 @@ router.post('/register',
     [
         body('Sahkoposti', 'email is not valid').isEmail(),
         body('Salasana', 'atleast one upper case letter').matches('(?=.*[A-Z]).{8,}'),
-        sanitizeBody('Sahkoposti').escape(),
+        sanitizeBody('Sahkoposti').escape(), // Turha ehkä, koska isEmail() käytössä aikaisemmin?
     ],
     authController.user_create,
     authController.login,
