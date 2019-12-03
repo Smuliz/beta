@@ -17,7 +17,7 @@ const addUser = async (params) => {
 const getUser = async (id) => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT * FROM Asiakas WHERE AsiakasNumero = =;', [id]
+            'SELECT * FROM Asiakas WHERE AsiakasNumero = ?;', [id]
         );
         return rows;
     } catch (e) {
