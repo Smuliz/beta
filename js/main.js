@@ -5,7 +5,7 @@ const url ="http://10.114.34.106";
 const loginWrapper = document.querySelector("#login-wrapper");
 const loginForm = document.querySelector("#login-form");
 const logOut = document.querySelector("#log-out");
-const addUserForm = document.querySelector("add-user-form");
+const addUserForm = document.querySelector("#add-user-form");
 const userInfo = document.querySelector("#user-info");
 
 //Login
