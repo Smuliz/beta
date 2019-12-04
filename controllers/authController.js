@@ -31,7 +31,7 @@ const user_create = async (req,res,next) => {
         res.send(errors.array());
     } else {
         const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(req.body.password, salt);
+        const hash = bcrypt.hashSync(req.body.Salasana, salt);
 
         const params = [
             req.body.Sahkoposti,
