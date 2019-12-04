@@ -17,13 +17,13 @@ passport.use(
             const [user] = await userModel.getUserLogin(params);
             console.log("Local Strategy", user);
             if (user === undefined) {
-                return done(null, false, { message: "Incorrect Email."});
+                return done(null, false, { message: "Incorrect Email." });
             }
             if (!bcrypt.compareSync(Salasana, user.Salasana)) {
-                return done(null,false, { message: "Incorrect Password"});
+                return done(null, false, { message: "Incorrect Password" });
             }
             delete user.Salasana // salasanan poisto ennen returnia
-            return done(null, {...user}, { message: "Logged in succesfully"});
+            return done(null, { ...user }, { message: "Logged in succesfully" });
         } catch (e) {
             return done(e);
         }
@@ -37,19 +37,15 @@ passport.use(
             jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
             secretOrKey: "suolattu_avain"
         },
-        async (jwtPayLoad, done) => {
-            try {
-                const [user] = await userModel.getUser(jwtPayLoad.AsiakasNumero);
-                if (user === undefined) {
-                    return done(null,false);
-                } else {
-                    return done(null,{...user});
-                }
-            } catch (e) {
-                return done(e);
-            }
-        },
-    )
-);
+        (jwtPayload, done) => {
+            return userModel.getUserLogin([jwtPayload.Sahkoposti])
+                .then(user => {
+                    return done(null, { ...user });
+                }).catch(e => {
+                    return done(e);
+                });
+        }
+    ));
+
 
 module.exports = passport;

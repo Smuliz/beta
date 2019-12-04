@@ -15,7 +15,7 @@ loginForm.addEventListener('submit', async (evt) => {
     const fetchOptions = {
         method: 'POST',
         headers: {
-            'content-type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
     };
