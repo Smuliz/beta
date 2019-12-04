@@ -21,7 +21,16 @@ const getUser = async (id) => {
         );
         return rows;
     } catch (e) {
-        console.log("errori userModel - getUser", e.message);
+        console.log("error userModel - getUser", e.message);
+    }
+};
+
+const getAllUsers = async () => {
+    try {
+        const [rows] = await promisePool.query('SELECT * FROM Asiakas;');
+        return rows;
+    } catch (e) {
+        console.log('error userModel getAllUsers', e.message);
     }
 };
 
@@ -39,5 +48,6 @@ const getUserLogin = async (params) => {
 module.exports = {
     addUser,
     getUser,
+    getAllUsers,
     getUserLogin,
 }

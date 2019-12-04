@@ -26,7 +26,10 @@ loginForm.addEventListener('submit', async (evt) => {
     if (!json.user) {
         alert(json.message);
     } else {
+        // save token
         sessionStorage.setItem('token', json.token);
+
+        // what hapens after login is succesful
         logOut.style.display = 'block';
         userInfo.innerHTML = `Hello ${json.user.Sahkoposti}`
     }
@@ -43,7 +46,9 @@ logOut.addEventListener('click', async (evt) => {
 };
 const response = await fetch(url + '/auth/logout', options);
 const json = await response.json();
+// Remove token
 sessionStorage.removeItem('token');
+// What happens after logout is succesful
 alert("You have logged out succesfully");
 
 logOut.style.display = 'none';
@@ -66,7 +71,9 @@ addUserForm.addEventListener('submit', async (evt) => {
     };
     const response = await fetch(url + '/auth/register', fetchOptions);
     const json = await response.json();
+    // Save token
     sessionStorage.setItem('token', json.token);
+    // What happens after registering is succesful
     loginWrapper.style.display = 'none';
     logOut.style.display = 'block';
 });
