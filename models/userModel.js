@@ -6,7 +6,7 @@ const promisePool = pool.promise();
 const addUser = async (params) => {
     try {
         const [rows] = await promisePool.execute(
-            'INSERT INTO Asiakas (Sahkoposti, salasana) VALUES (?,?);', params
+            'INSERT INTO Asiakas (Sahkoposti, Salasana) VALUES (?,?);', params
         );
         return rows;
     } catch (e) {
