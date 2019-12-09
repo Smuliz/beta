@@ -11,14 +11,20 @@ const tuote_get = async (req,res) => {
   await res.json(tuote[0]);
 };
 const tuote_create_post = async (req, res) => {
-  const params = [
-        req.body.name,
-        req.body.maara,
+  try {
+    const params = [
+      req.body.name,
+      req.body.maara,
 
-      ];
-      console.log('create',params);
-      const result = await tuoteModel.addTuote(params);
-      await res.json({message: 'upload ok'});
+    ];
+    console.log('create', params);
+    const result = await tuoteModel.addTuote(params);
+    await res.json({message: 'upload ok'});
+  } catch (e) {
+    console.log('exif error', e);
+    res.status(400).json({message: e.message});
+  }
+
 
 };
 const tuote_update = async (req,res) =>{

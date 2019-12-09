@@ -1,5 +1,5 @@
 'use strict';
-const url = 'http://localhost:3000'; // change url when uploading to server
+const url = 'http://10.114.34.106'; // change url when uploading to server
 const ul = document.querySelector('ul');
 const addForm = document.querySelector('#addForm');
 const modForm = document.querySelector('#modForm');
@@ -28,6 +28,7 @@ const createShoppingCard = (items) => {
       inputs[1].value = tuote.maara;
       inputs[2].value = tuote.tuote_id;
     });
+
 
     // delete selected list
     const delButton = document.createElement('button');
@@ -69,7 +70,6 @@ const getTuote = async () => {
     console.log(e.message());
   }
 };
-
 
 // submit add tuote form
 addForm.addEventListener('submit', async (evt) => {

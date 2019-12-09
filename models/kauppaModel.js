@@ -2,49 +2,48 @@
 const pool = require('../database/db');
 const promisePool = pool.promise();
 
-const getAllTuoteet = async () => {
+const getAllKaupat = async () => {
   try{
-    const [rows] = await promisePool.execute('SELECT * FROM Tuote order by Tuote.tuotenumero;');
+    const [rows] = await promisePool.execute('SELECT * FROM `Kauppa` order by `KauppaNumero`;');
     return rows;
   }catch (e) {
     console.log('error',e.message);
   }
 };
-const getTuote = async (id) => {
+const getKauppa = async (id) => {
   try {
     const [rows] = await promisePool.execute(
-        'SELECT * FROM Tuote WHERE TuoteNumero = ?;',
+        'SELECT * FROM `Kauppa` WHERE `KauppaNumero` = ?;',
         [id]);
     return rows;
   } catch (e) {
     console.log('error', e.message);
   }
 };
-const addTuote = async (params) => {
+const addKauppa = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Tuote (TuoteNimi) VALUES ( ?);' +
-        'INSERT INTO Relationship (TuoteMaara) VALUES (?);',
+        'INSERT INTO `Kauppa` (KauppaNimi,Paikkatieto,Osoite) VALUES (?,? ?);',
         params);
     return rows;
   } catch (e) {
     console.log('error', e.message);
   }
 };
-const updateTuote = async (params) => {
+const updateKauppa = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'UPDATE `Tuote` SET `tuoteNimi`= ?,`maara`= ? WHERE tuotenumero = ?;',
+        'UPDATE `Kauppa` SET `KauppaNimi`= ?,`Paikkatieto`= ?,`Osoite`= ? WHERE `KauppaNumero` = ?;',
         params);
     return rows;
   } catch (e) {
     console.log('error', e.message);
   }
 };
-const deleteTuote = async (params) => {
+const deleteKauppa = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'DELETE FROM Tuote WHERE `tuotenumero` = ?;',
+        'DELETE FROM `Kauppa` WHERE `KauppaNumero` = ?;',
         params);
     return rows;
   } catch (e) {
@@ -53,9 +52,9 @@ const deleteTuote = async (params) => {
 };
 
 module.exports = {
-  getAllTuoteet,
-  getTuote,
-  addTuote,
-  updateTuote,
-  deleteTuote,
+  getAllKaupat,
+  getKauppa,
+  addKauppa,
+  updateKauppa,
+  deleteKauppa,
 };
