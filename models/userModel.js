@@ -14,10 +14,10 @@ const addUser = async (params) => {
     }
 };
 
-const getUser = async (id) => {
+const getUser = async (sposti) => {
     try {
         const [rows] = await promisePool.execute(
-            'SELECT * FROM Asiakas WHERE AsiakasNumero = ?;', [id]
+            'SELECT * FROM Asiakas WHERE Sahkoposti = ?;', [sposti]
         );
         return rows;
     } catch (e) {

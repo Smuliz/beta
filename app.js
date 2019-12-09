@@ -1,7 +1,7 @@
 "use strict";
 const express = require("express");
-const passport = require("./utils/pass");
 const cors = require('cors');
+const passport = require("./utils/pass.js");
 
 
 const app = express();

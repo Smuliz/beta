@@ -37,15 +37,23 @@ passport.use(
             jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
             secretOrKey: "suolattu_avain"
         },
-        (jwtPayload, done) => {
-            return userModel.getUserLogin([jwtPayload.Sahkoposti])
-                .then(user => {
-                    return done(null, { ...user });
-                }).catch(e => {
-                    return done(e);
-                });
-        }
-    ));
+        async (jwtPayload, done) => {
+            console.log('payload', jwtPayload);
+            try {
+                const [user] = await userModel.getUser(jwtPayload.Sahkoposti);
+                if (user === undefined) {
+                    return done(null, false);
+                } else {
+                    return done(null, false);
+                }
+            } catch (err) {
+                return done(err) 
+                    
+                
+            }
+        },
+    )
+);
 
 
 module.exports = passport;

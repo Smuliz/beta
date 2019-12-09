@@ -1,6 +1,6 @@
 "use strict";
 
-const url ="http://10.114.34.106";
+const url ="http://localhost:3000";
 
 const loginWrapper = document.querySelector("#login-wrapper");
 const loginForm = document.querySelector("#login-form");

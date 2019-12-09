@@ -11,3 +11,7 @@ router.get("/:id", userController.user_get);
 router.get("/user", (req,res) => {
     res.send("with this endpoint you can get users.");
 });
+
+module.exports = {
+    router,
+}

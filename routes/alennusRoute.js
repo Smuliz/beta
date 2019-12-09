@@ -23,7 +23,7 @@ router.post("/", upload.single("alennus"), (req,res,next) => {
 
 router.post("/",
     [
-    body('KauppaNumero').isNumeric().excape(),
+    body('KauppaNumero').isNumeric().escape(),
     body('AsiakasNumero').isNumeric().escape(),
 
     ],
