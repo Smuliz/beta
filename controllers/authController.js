@@ -24,7 +24,7 @@ const login = (req,res) => {
 };
 
 const user_create = async (req,res,next) => {
-    const error = validationResult(req);
+    const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
         console.log("error while creating user. from authController.js", errors);
