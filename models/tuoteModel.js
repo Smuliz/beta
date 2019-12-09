@@ -23,7 +23,8 @@ const getTuote = async (id) => {
 const addTuote = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Tuote (tuoteNimi) VALUES ( ?);',
+        'INSERT INTO Tuote (tuoteNimi) VALUES ( ?);' +
+        'INSERT INTO Relationship (tuoteMaara) VALUES (?);',
         params);
     return rows;
   } catch (e) {

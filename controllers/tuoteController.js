@@ -14,6 +14,7 @@ const tuote_create_post = async (req, res) => {
   const params = [
         req.body.name,
         req.body.maara,
+
       ];
       console.log('create',params);
       const result = await tuoteModel.addTuote(params);
