@@ -6,12 +6,16 @@ body {
   font-family: 'bar sofia', serif;
   margin: 0; }
 
-image {
-  height: 100%;
-  position: center;
-  border: 15px; }
+section#card {
+  background: url("img/Pohja.jpg") no-repeat center;
+  height: 75%;
+  padding: 10px;
+  margin: 1em auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 75%; }
 
-/* LOGIN */
+/* NAV */
 nav {
   width: auto;
   height: 10vh;
@@ -23,19 +27,24 @@ nav {
   font-size: 16px; }
 
 @media screen and (max-width: 840px) {
+  button {
+    border: 15px;
+    color: #fff6bb;
+    background-color: #007686; }
+
+  footer {
+    position: fixed;
+    background-color: #53ebff; }
+
   nav {
     position: relative; }
 
   .hampurilainen {
-    position: absolute;
-    cursor: pointer;
-    right: 5%;
-    top: 50%;
-    transform: translate(-5%, -50%);
-    z-index: 2; }
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer; }
 
   .nav-links {
-    position: fixed;
     background: #007686;
     height: 100vh;
     width: 100%;
@@ -48,10 +57,11 @@ nav {
   .nav-links.open {
     clip-path: circle(100px at 90% -20%);
     -webkit-clip-path: circle(800px at 90% -20%);
-    pointer-events: all; }
+    pointer-events: all;
+    flex-wrap: wrap; }
 
   .dropbtn {
-    background-color: #4CAF50;
+    background-color: #007686;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -116,5 +126,8 @@ nav {
           width: 30%;
       }
  */
+div {
+  height: 10vh;
+  width: auto; }
 
 /*# sourceMappingURL=Lista.css.map */

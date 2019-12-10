@@ -22,15 +22,22 @@ body{
   margin: 0;
 }
 
-image {
-  height: 100%;
-  position: center;
-  border: $borders;
-}
 
-/* LOGIN */
+
+section#card {
+  background: url("img/Pohja.jpg") no-repeat center;
+  height: 75%;
+  padding: 10px;
+  margin: 1em auto;
+  border-radius: $borders;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  width: 75%;
+
+}
+/* NAV */
 
 nav {
+
   width: auto;
   height: 10vh;
   background: color(primary);
@@ -44,22 +51,28 @@ nav {
 
 @media screen and (max-width: 840px) {
 
+  button{
+    border: $borders;
+    color: color(accent);
+    background-color: color(primary-dark);
+  }
 
+  footer{
+    position: fixed;
+    background-color: color(primary);
+  }
 
   nav {
     position: relative;
   }
 
   .hampurilainen{
-    position: absolute;
+    display: flex;
+    justify-content: space-around;
     cursor: pointer;
-    right: 5%;
-    top: 50%;
-    transform: translate(-5%, -50%);
-    z-index: 2;
   }
   .nav-links {
-    position: fixed;
+
     background: color(primary-dark);
     height: 100vh;
     width: 100%;
@@ -74,9 +87,10 @@ nav {
     clip-path: circle(100px at 90% -20%);
     -webkit-clip-path: circle(800px at 90% -20%);
     pointer-events: all;
+    flex-wrap: wrap;
   }
   .dropbtn {
-    background-color: #4CAF50;
+    background-color: color(primary-dark);
     color: white;
     padding: 16px;
     font-size: 16px;
