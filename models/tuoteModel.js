@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllTuoteet = async () => {
   try{
-    const [rows] = await promisePool.execute('SELECT * FROM Tuote inner join Relationship on Tuote.TuoteNumero = Relation.TuoteNumero order by Tuote.tuotenumero;');
+    const [rows] = await promisePool.execute('SELECT * FROM Tuote INNER JOIN Relationship on Tuote.TuoteNumero = Relation.TuoteNumero order by Tuote.tuotenumero;');
     return rows;
   }catch (e) {
     console.log('error',e.message);
@@ -43,7 +43,7 @@ const addMaara = async (params) => {
 const updateTuote = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'UPDATE `Tuote` SET `tuoteNimi`= ?,`maara`= ? WHERE tuotenumero = ?;',
+        'UPDATE `Tuote` SET `TuoteNimi`= ?,`Maara`= ? WHERE TuotenNumero = ?;',
         params);
     return rows;
   } catch (e) {
@@ -53,7 +53,7 @@ const updateTuote = async (params) => {
 const deleteTuote = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'DELETE FROM Tuote WHERE `tuotenumero` = ?;',
+        'DELETE FROM Tuote WHERE `TuoteNumero` = ?;',
         params);
     return rows;
   } catch (e) {

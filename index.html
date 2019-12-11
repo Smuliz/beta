@@ -7,14 +7,13 @@
 <body>
 <div class="container">
     <h1>List of products</h1>
-    <ul>
+    <ul class="tuote">
        <!--js creates list here-->
     </ul>
     <div class="forms">
         <div class="form-wrapper">
             <h3>Add Products</h3>
             <form
-
                    class="light-border"
                    id="addForm">
                 <input class="light-border" type="text" name="name" placeholder="Name" required>
@@ -36,10 +35,15 @@
 
 
 </div>
+<div class="hide modal" id="image-modal">
+    <a href="#" class="close">Close</a>
+    <img src="" alt="">
+    <div id="map"></div>
+</div>
 <div class="container">
     <div class="kaupat">
         <h1>List of Shops</h1>
-        <ul>
+        <ul >
             <!--js creates list here-->
         </ul>
     </div>
