@@ -105,7 +105,7 @@ const createShopsList = (items) => {
       const inputs = modForm.querySelectorAll('input');
       inputs[0].value = kauppa.name;
       inputs[1].value = kauppa.osoite;
-      inputs[2].value = kauppa.id;
+      inputs[2].value = kauppa.kauppa_id;
     });
 
 
