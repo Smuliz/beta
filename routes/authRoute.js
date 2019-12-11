@@ -9,13 +9,13 @@ router.get('/logout', authController.logout);
 
 router.post('/register',
     [
-        body('Sahkoposti', 'email is not valid').isEmail(),
+        body('Sahkoposti', 'email is not valid'),
         body('Salasana', 'atleast one upper case letter').
             matches('(?=.*[A-Z]).{8,}'),
         // sanitizeBody('Sahkoposti').escape(), // Turha ehkä, koska isEmail() käytössä aikaisemmin?
     ],
     authController.user_create,
-    //authController.login,
+    authController.login,
 );
 
 module.exports = router;

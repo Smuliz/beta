@@ -6,6 +6,4 @@ const user_get = async (req,res) => {
     await res.json(user[0]);
 };
 
-module.exports = {
-    user_get,
-}
+module.exports = {user_get};

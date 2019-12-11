@@ -19,7 +19,9 @@ const getUser = async (sposti) => {
         const [rows] = await promisePool.execute(
             'SELECT * FROM Asiakas WHERE Sahkoposti = ?;', [sposti]
         );
+        console.log(rows);
         return rows;
+        
     } catch (e) {
         console.log("error userModel - getUser", e.message);
     }

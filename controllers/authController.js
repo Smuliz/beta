@@ -1,7 +1,7 @@
 "user strict";
 const {validationResult} = require("express-validator");
 const jwt = require("jsonwebtoken");
-const passport = require("passport");
+const passport = require("../utils/pass");
 const bcrypt = require("bcryptjs");
 const userModel = require("../models/userModel");
 
@@ -10,9 +10,10 @@ const login = (req,res) => {
     passport.authenticate('local', {session:false}, (err, Sahkoposti) => {
         console.log(Sahkoposti);
         if (err || !Sahkoposti) {
+            console.log("Login error", err, Sahkoposti);
             return res.status(400).json({
                 message: "Something went wrong with login",
-                //user: user
+                Sahkoposti: Sahkoposti
             });
         }
         req.login(Sahkoposti, {session: false}, err => {
