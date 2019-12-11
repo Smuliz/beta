@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllTuoteet = async () => {
   try{
-    const [rows] = await promisePool.execute('SELECT * FROM Tuote order by Tuote.tuotenumero;');
+    const [rows] = await promisePool.execute('SELECT * FROM Tuote inner join Relationship on Tuote.TuoteNumero = Relation.TuoteNumero order by Tuote.tuotenumero;');
     return rows;
   }catch (e) {
     console.log('error',e.message);
@@ -23,8 +23,17 @@ const getTuote = async (id) => {
 const addTuote = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Tuote (TuoteNimi) VALUES ( ?);' +
-        'INSERT INTO Relationship (TuoteMaara) VALUES (?);',
+        'INSERT INTO Tuote (TuoteNimi) VALUES ( ?);',
+        params);
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
+const addMaara = async (params) => {
+  try {
+    const [rows] = await promisePool.execute(
+        'INSERT INTO Relationship (TuoteMaara,TuoteNumero) VALUES (?,?);',
         params);
     return rows;
   } catch (e) {
@@ -53,6 +62,7 @@ const deleteTuote = async (params) => {
 };
 
 module.exports = {
+  addMaara,
   getAllTuoteet,
   getTuote,
   addTuote,

@@ -14,11 +14,16 @@ const tuote_create_post = async (req, res) => {
   try {
     const params = [
       req.body.name,
-      req.body.maara,
 
     ];
     console.log('create', params);
     const result = await tuoteModel.addTuote(params);
+    console.log(result);
+    const params2 = [
+      req.body.maara,
+      result.insertId,
+    ];
+    const result2 = await tuoteModel.addMaara(params2);
     await res.json({message: 'upload ok'});
   } catch (e) {
     console.log('exif error', e);

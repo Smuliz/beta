@@ -78,6 +78,7 @@ addForm.addEventListener('submit', async (evt) => {
   const fetchOptions = {
     method: 'POST',
     body: JSON.stringify(fd),
+    headers:{'Content-Type':'application/json'},
 
   };
   console.log(fetchOptions);
