@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Login form -->
+    <div class="form" id="login-wrapper">
+        <div class="login-wrapper">
+            <h3>Login</h3>
+            <form id="login-form" class="light-border">
+            <div>
+                <label for="">Email:</label>
+                <input type="text" class="light-border" name="Sahkoposti">
+            </div>
+            <div>
+                <label for="">Password:</label>
+                <input type="password" class="light-border" name="Salasana">
+            </div>
+            <div>
+                <button class="light-border" type="submit">Log In</button>
+            </div>
+            </form>
+        </div>    
+    </div>
+    <!-- Register form -->
+    <div class="form-wrapper">
+        <h3>Register</h3>
+        <form id="add-user-form" class="light-border">
+            <input type="email" class="light-border" name="Sahkoposti" placeholder="email" required>
+            <input type="password" class="light-border" name="Salasana" pattern="(?=.*[A-Z]).{8,}" placeholder="password" required>
+            <button class="light-border" type="submit">Register</button>
+        </form>
+    </div>
+    <!-- Logout nappi -->
+    <header id="log-out" style="display:none;">
+    <p id="user-info"></p>
+    <button class="light-border">Log out</button>
+    </header>
+    <!-- Modal, jonka css puuttuu vielä!!! tarkoituksena avata tämä modal kun painaa "lisää alennus" nappia-->
+    <button class="modalAvaus">Modal POPUP</button>
+    <div id="fileModal" class="modal">
+        <div class="modalContent">
+            <span class="close"></span>
+            <form id="add-alennus">
+                <input type="text" name="KauppaNimi" placeholder="kaupan nimi">
+                <input type="file" name="fileName" accept="image/*" placeholder="Choose file">
+                <button type="submit">Lisää alennus</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <h1>List of products</h1>
+        <ul class="tuote" >
+           <!--js creates list here-->
+        </ul>
+        <!-- Add products form -->
+        <div class="forms">
+            <div class="form-wrapper">
+                <h3>Add Products</h3>
+                <form
+                       class="light-border"
+                       id="addForm">
+                    <input class="light-border" type="text" name="name" placeholder="Name" required>
+                    <input class="light-border" type="number" name="maara" placeholder="Maara" required>
+                    <input type="hidden" name="id">
+                    <button class="light-border" type="submit">Add to list</button>
+                </form>
+            </div>
+        </div>
+        <!-- Modify tuote/list -->
+        <div class="form-wrapper">
+            <h3>Modify list</h3>
+            <form id="modForm" class="light-border">
+                <input class="light-border" type="text" name="name" placeholder="Name" required>
+                <input class="light-border" type="number" name="maara" placeholder="Maara" required>
+                <input type="hidden" name="tuoteId">
+                <button class="light-border" type="submit">Save changes</button>
+            </form>
+        </div>
+        <!-- Create list formi -->
+        <div class="form-wrapper">
+            <h3>Create list</h3>
+            <form id="createListForm" class="light-border">
+                <input class="light-border" type="text" name="ListaNimi" placeholder="Name" required>
+                <button class="light-border" type="submit">Create List</button>
+            </form>
+        </div>
+    
+    
+    </div>
+    <!-- Jotain gps juttuja?? -->
+    <div class="hide modal" id="image-modal">
+        <a href="#" class="close">Close</a>
+        <img src="" alt="">
+        <div id="map"></div>
+    </div>
+    <!-- Kauppojen lista -->
+    <div class="container">
+        <div class="kaupat">
+            <h1>List of Shops</h1>
+            <ul class="shops" >
+                <!--js creates list here-->
+            </ul>
+        </div>
+    </div>
+
+<script src="./js/main.js"></script>
+<script src="./js/serialize.js"></script>
+</body>
+</html>
