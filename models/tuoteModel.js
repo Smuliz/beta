@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllTuoteet = async () => {
   try{
-    const [rows] = await promisePool.execute('SELECT * FROM Tuote INNER JOIN Relationship on Tuote.TuoteNumero = Relation.TuoteNumero order by Tuote.tuotenumero;');
+    const [rows] = await promisePool.execute('SELECT * FROM Tuote INNER JOIN Relationship on Tuote.TuoteNumero = Relationship.TuoteNumero order by Tuote.tuotenumero;');
     return rows;
   }catch (e) {
     console.log('error',e.message);
@@ -33,7 +33,7 @@ const addTuote = async (params) => {
 const addMaara = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'INSERT INTO Relationship (TuoteMaara,TuoteNumero) VALUES (?,?);',
+        'INSERT INTO Relationship (TuoteMaara,TuoteNumero,ListaNumero) VALUES (?,?,?);',
         params);
     return rows;
   } catch (e) {
@@ -43,11 +43,21 @@ const addMaara = async (params) => {
 const updateTuote = async (params) => {
   try {
     const [rows] = await promisePool.execute(
-        'UPDATE `Tuote` SET `TuoteNimi`= ?,`Maara`= ? WHERE TuotenNumero = ?;',
+        'UPDATE `Tuote` SET `TuoteNimi`= ? WHERE TuoteNumero = ?;',
         params);
     return rows;
   } catch (e) {
     console.log('error', e.message);
+  }
+};
+const updateMaara = async (params) =>{
+  try{
+    const [rows] = await promisePool.execute(
+        'UPDATE `Relationship` SET `TuoteMaara`= ?, WHERE `Relationship.TuoteNumero`= ?',
+        params);
+    return rows;
+  } catch (e) {
+    console.log('error',e.message);
   }
 };
 const deleteTuote = async (params) => {
@@ -60,6 +70,17 @@ const deleteTuote = async (params) => {
     console.log('error', e.message);
   }
 };
+const deleteMaara = async (params) => {
+  try {
+    const [rows] = await promisePool.execute(
+        'DELETE FROM Relationship WHERE `TuoteNumero` = ?;',
+        params);
+    return rows;
+  } catch (e) {
+    console.log('error', e.message);
+  }
+};
+
 
 module.exports = {
   addMaara,
@@ -67,5 +88,7 @@ module.exports = {
   getTuote,
   addTuote,
   updateTuote,
+  updateMaara,
   deleteTuote,
+  deleteMaara,
 };

@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllKaupat = async () => {
   try{
-    const [rows] = await promisePool.execute('SELECT `Osoite`,`KauppaNimi` FROM `Kauppa` ORDER BY `KauppaNumero`;');
+    const [rows] = await promisePool.execute('SELECT `Osoite`,`KauppaNimi`,KauppaNumero FROM `Kauppa` ORDER BY `KauppaNumero`;');
     return rows;
   }catch (e) {
     console.log('error',e.message);

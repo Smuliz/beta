@@ -13,11 +13,12 @@ const createShoppingCard = (items) => {
   //clear ul
   ul.innerHTML='';
   items.forEach(tuote =>{
+    console.log(tuote);
     //create li with DOM methods
     const h2 = document.createElement('h2');
-    h2.innerHTML=tuote.name;
+    h2.innerHTML=tuote.TuoteNimi;
     const maara = document.createElement('p');
-    maara.innerHTML = `Maara: ${tuote.maara}`;
+    maara.innerHTML = `Maara: ${tuote.TuoteMaara}`;
     // add selected list's values to modify form
     const modButton = document.createElement('button');
     modButton.innerHTML = 'Modify';
@@ -29,9 +30,9 @@ const createShoppingCard = (items) => {
     });
     modButton.addEventListener('click', () => {
       const inputs = modForm.querySelectorAll('input');
-      inputs[0].value = tuote.name;
-      inputs[1].value = tuote.maara;
-      inputs[2].value = tuote.tuote_id;
+      inputs[0].value = tuote.TuoteNimi;
+      inputs[1].value = tuote.TuoteMaara;
+      inputs[2].value = tuote.TuoteNumero;
     });
 
 
@@ -43,7 +44,7 @@ const createShoppingCard = (items) => {
         method: 'DELETE',
       };
       try {
-        const response = await fetch(url + '/tuote/' + items.tuote_id, fetchOptions);
+        const response = await fetch(url + '/tuote/' + tuote.TuoteNumero, fetchOptions);
         const json = await response.json();
         console.log('delete response', json);
         console.log(getTuote());
@@ -69,6 +70,7 @@ const createShopsList = (items) => {
   //clear ul
   ul2.innerHTML='';
   items.forEach(kauppa =>{
+    console.log(kauppa);
     //create li with DOM methods
     const img = document.createElement('img');
     img.src = url + '/thumbnails/' + kauppa.filename;
@@ -94,18 +96,18 @@ const createShopsList = (items) => {
     const figure = document.createElement('figure').appendChild(img);
 
     const h2 = document.createElement('h2');
-    h2.innerHTML=kauppa.name;
+    h2.innerHTML=kauppa.KauppaNimi;
     const osoite = document.createElement('p');
-    osoite.innerHTML = `Osoite: ${kauppa.osoite}`;
+    osoite.innerHTML = `Osoite: ${kauppa.Osoite}`;
     // add selected list's values to modify form
     const modButton = document.createElement('button');
     modButton.innerHTML = 'Modify';
 
     modButton.addEventListener('click', () => {
       const inputs = modForm.querySelectorAll('input');
-      inputs[0].value = kauppa.name;
-      inputs[1].value = kauppa.osoite;
-      inputs[2].value = kauppa.kauppa_id;
+      inputs[0].value = kauppa.KauppaNimi;
+      inputs[1].value = kauppa.Osoite;
+      inputs[2].value = kauppa.KauppaNumero;
     });
 
 
@@ -117,7 +119,7 @@ const createShopsList = (items) => {
         method: 'DELETE',
       };
       try {
-        const response = await fetch(url + '/kauppa/' + items.id, fetchOptions);
+        const response = await fetch(url + '/kauppa/' + kauppa.KauppaNumero, fetchOptions);
         const json = await response.json();
         console.log('delete response', json);
         getKaupat();
@@ -135,7 +137,7 @@ const createShopsList = (items) => {
     li.appendChild(osoite);
     li.appendChild(modButton);
     li.appendChild(delButton);
-    ul.appendChild(li);
+    ul2.appendChild(li);
   });
 };
 // close modal
@@ -155,13 +157,14 @@ const getKaupat = async () => {
     };
     const response = await fetch(url + '/kauppa',options);
     const items = await response.json();
+    console.log(items);
     createShopsList(items);
   }
   catch (e) {
     console.log(e.message);
   }
 };
-
+getKaupat();
 // AJAX call tuote
 const getTuote = async () => {
   console.log('getTuote token ', sessionStorage.getItem('token'));
@@ -180,7 +183,7 @@ const getTuote = async () => {
     console.log(e.message);
   }
 };
-
+getTuote();
 // submit add tuote form
 addForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();

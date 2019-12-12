@@ -6,7 +6,7 @@ const upload = multer({dest: 'uploads/'});
 const kauppaController = require('../controllers/kauppaController');
 
 router.get('/', kauppaController.kauppa_list_get);
-router.post('/',kauppaController.kauppa_list_get);
+//router.post('/',kauppaController.kauppa_list_get);
 
 router.get('/:id', kauppaController.kauppa_get);
 

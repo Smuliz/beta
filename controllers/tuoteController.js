@@ -22,6 +22,7 @@ const tuote_create_post = async (req, res) => {
     const params2 = [
       req.body.maara,
       result.insertId,
+        1,
     ];
     const result2 = await tuoteModel.addMaara(params2);
     await res.json({message: 'upload ok'});
@@ -35,17 +36,30 @@ const tuote_create_post = async (req, res) => {
 const tuote_update = async (req,res) =>{
   const params = [
       req.body.name,
-      req.body.maara,
-      req.body.id,
+
   ];
+
   const result = await tuoteModel.updateTuote(params);
   await res.json(result);
+  console.log(result);
+  const params2 = [
+    req.body.maara,
+
+  ];
+  const result2 = await tuoteModel.updateMaara(params2);
+  await res.json(result2);
 };
 const tuote_delete = async (req, res) => {
   const params = [
     req.params.id,
   ];
+  console.log(params,"Täällä");
   const result = await tuoteModel.deleteTuote(params);
+  await res.json(result);
+  const params2 = [
+    req.params.id,
+  ];
+  const result2 = await tuoteModel.deleteMaara(params2);
   await res.json(result);
 };
 
