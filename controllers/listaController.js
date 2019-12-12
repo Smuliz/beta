@@ -17,6 +17,7 @@ const lista_create_post = async (req,res) => {
         const params = [
             req.body.ListaNimi,
             req.user.AsiakasNumero,
+            req.file.filename
         ];
         console.log("OLEN TÄÄLLÄT!!!!",params);
         const result = await listaModel.addLista(params);

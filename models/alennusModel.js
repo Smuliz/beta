@@ -14,7 +14,7 @@ const getAlennus = async id => {
 // addAlennus kohdan parametrit tulee tarkistaa enne deploymenttia
 const addAlennus = async params => {
     try {
-        const [rows] = await promisePool.execute("INSERT INTO Alennus (AsiakasNumero, KauppaNimi, KuvaNimi) VALUES (?;?;?);", params);
+        const [rows] = await promisePool.execute("INSERT INTO Alennus (AsiakasNumero, KauppaNimi, KuvaNimi) VALUES (?,?,?);", params);
         return rows;
     } catch (e) {
         console.log("error in addAlennus - alennusModel", e.message);
