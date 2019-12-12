@@ -34,26 +34,34 @@ const tuote_create_post = async (req, res) => {
 
 };
 const tuote_update = async (req,res) =>{
-  const params = [
+  try {
+    const params = [
       req.body.name,
+        req.body.tuoteId,
 
-  ];
+    ];
+    console.log(params,'mopp');
+    const result = await tuoteModel.updateTuote(params);
+    console.log(result,'Täätätätä');
+    const params2 = [
+      req.body.maara,
+        req.body.tuoteId,
 
-  const result = await tuoteModel.updateTuote(params);
-  await res.json(result);
-  console.log(result);
-  const params2 = [
-    req.body.maara,
+    ];
+    console.log(params,'TÄT');
+    const result2 = await tuoteModel.updateMaara(params2);
+    console.log(result2,'mokookok');
+    await res.json({message: 'upload ok'});
+  } catch (e) {
+    console.log('exif error', e);
+    res.status(400).json({message: e.message});
+  }
 
-  ];
-  const result2 = await tuoteModel.updateMaara(params2);
-  await res.json(result2);
 };
 const tuote_delete = async (req, res) => {
   const params = [
     req.params.id,
   ];
-  console.log(params,"Täällä");
   const result = await tuoteModel.deleteTuote(params);
   await res.json(result);
   const params2 = [

@@ -53,7 +53,7 @@ const updateTuote = async (params) => {
 const updateMaara = async (params) =>{
   try{
     const [rows] = await promisePool.execute(
-        'UPDATE `Relationship` SET `TuoteMaara`= ?, WHERE `Relationship.TuoteNumero`= ?',
+        'UPDATE `Relationship` SET `TuoteMaara`= ? WHERE TuoteNumero= ?',
         params);
     return rows;
   } catch (e) {

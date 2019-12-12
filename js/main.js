@@ -47,11 +47,10 @@ const createShoppingCard = (items) => {
         const response = await fetch(url + '/tuote/' + tuote.TuoteNumero, fetchOptions);
         const json = await response.json();
         console.log('delete response', json);
-        console.log(getTuote());
         getTuote();
       }
       catch (e) {
-        console.log(e.message());
+        console.log(e.message);
       }
     });
 
