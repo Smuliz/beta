@@ -32,11 +32,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
 app.use("/auth", authRoute);
-app.use("/user", passport.authenticate('jwt', {session:false}), userRoute);  // <-- En oo varma tästä? userRoute pitää päivittää
+app.use("/user", passport.authenticate('jwt', {session:false}), userRoute); 
 app.use("/alennus", passport.authenticate('jwt', {session:false}), alennusRoute);
 app.use('/tuote', passport.authenticate('jwt', {session:false}), tuoteRoute);
 app.use('/kauppa', passport.authenticate('jwt', {session:false}), kauppaRoute);
-app.use('/lista',/* passport.authenticate('jwt', {session:false}),*/ listaRoute);
+app.use('/lista', passport.authenticate('jwt', {session:false}), listaRoute);
 
 app.listen(port, () => console.log(`listening to port ${port}!`));
 // https.createServer(options, app).listen(httpsPort);

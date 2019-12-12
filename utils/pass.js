@@ -40,7 +40,7 @@ passport.use(
         },
         async (jwtPayload, done) => {
             console.log('payload', jwtPayload);
-            // return done(null,jwtPayload);
+             //return done(null,jwtPayload);
             try {
                 const [user] = await userModel.getUser(jwtPayload.Sahkoposti);
                 if (user === undefined) {

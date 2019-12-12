@@ -45,7 +45,7 @@
     <div id="fileModal" class="modal">
         <div class="modalContent">
             <span class="close"></span>
-            <form id="add-alennus">
+            <form id="add-alennus" enctype="multipart/form-data">
                 <input type="text" name="KauppaNimi" placeholder="kaupan nimi">
                 <input type="file" name="fileName" accept="image/*" placeholder="Choose file">
                 <button type="submit">Lisää alennus</button>
@@ -103,6 +103,14 @@
         <div class="kaupat">
             <h1>List of Shops</h1>
             <ul class="shops" >
+                <!--js creates list here-->
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="alennukset">
+            <h1>Alennus Lista</h1>
+            <ul class ="ale">
                 <!--js creates list here-->
             </ul>
         </div>

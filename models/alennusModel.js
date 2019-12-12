@@ -13,6 +13,7 @@ const getAlennus = async id => {
 };
 // addAlennus kohdan parametrit tulee tarkistaa enne deploymenttia
 const addAlennus = async params => {
+    console.log("addAlennus homma", params);
     try {
         const [rows] = await promisePool.execute("INSERT INTO Alennus (AsiakasNumero, KauppaNimi, KuvaNimi) VALUES (?,?,?);", params);
         return rows;
@@ -30,8 +31,20 @@ const deleteAlennus = async params => {
     }
 };
 
+const getAllAlennus = async () => {
+    try {
+        const [rows] = await promisePool.execute(
+            "SELECT * FROM Alennus;"
+        );
+        return rows;
+    } catch (e) {
+        console.log("Error in alennusModel - getAllAlennus", e.message);
+    }
+}
+
 module.exports = {
     getAlennus,
     addAlennus,
     deleteAlennus,
+    getAllAlennus,
 }

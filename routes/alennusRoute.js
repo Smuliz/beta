@@ -9,6 +9,7 @@ const { body } = require("express-validator");
 const { sanitizeBody } = require("express-validator");
 
 router.get("/:id", alennusController.alennus_get);
+router.get("/", alennusController.alennus_list_get);
 
 router.post("/", upload.single("fileName"), (req,res,next) => {
     if (req.file === undefined) {

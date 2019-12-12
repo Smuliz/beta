@@ -6,6 +6,7 @@ const resize = require("../utils/resize.js");
 
 const alennus_create = async (req,res) => {
     const errors = validationResult(req);
+    console.log("Olen tiedosto",req.file);
     if (!errors.isEmpty()) {
         res.status(422).json({ errors: errors.array()});
     } else {
@@ -16,9 +17,10 @@ const alennus_create = async (req,res) => {
                 { width: 120,height: 120 }
             );
             console.log("Thumbnails,", req.user);
+            const AsiakasNumero = 69;
             const params = [
+                AsiakasNumero,//req.user.AsiakasNumero,
                 req.body.KauppaNimi,
-                req.user.AsiakasNumero,
                 req.file.filename,
 
             ];
@@ -41,8 +43,14 @@ const alennus_delete = async (req,res) => {
     await res.json(result);
 };
 
+const alennus_list_get = async (req,res) => {
+    const alennukset = await alennusModel.getAllAlennus;
+    await res.json(alennukset);
+};
+
 module.exports = {
     alennus_create,
     alennus_delete,
     alennus_get,
+    alennus_list_get,
 }

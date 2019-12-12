@@ -1,6 +1,6 @@
 'use strict';
 const listaModel = require('../models/listaModel');
-
+const passport = require('../utils/pass');
 const lista_get = async (req,res) => {
     const lista = await listaModel.getLista(req.params.id);
     await res.json(lista[0]);
@@ -13,11 +13,11 @@ const lista_get_all = async (req,res) => {
 
 const lista_create_post = async (req,res) => {
     try {
-        console.log("OLEN MYÖS TÄÄLLÄ",req);
+        const AsiakasNumero = 69;
+        console.log("OLEN MYÖS TÄÄLLÄ",req.user);
         const params = [
             req.body.ListaNimi,
-            req.user.AsiakasNumero,
-            req.file.filename
+            AsiakasNumero, // req.user.AsiakasNumero EI toimi, joten väliaikaisratkaisu
         ];
         console.log("OLEN TÄÄLLÄT!!!!",params);
         const result = await listaModel.addLista(params);
