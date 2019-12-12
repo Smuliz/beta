@@ -5,71 +5,54 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="Style/Uusi.css">
+    <link rel="stylesheet" href="./Style/Uusi.css">
     <script src="https://kit.fontawesome.com/10837d069f.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 </head>
 <body>
 <nav>
+    <div>
     <div class="hampurilainen">
-        <ul>
+
+            <div>
             <li>
                 <button>
                    Apua/Kirjaudu ulos
                 </button>
             </li>
-        </ul>
+            </div>
+
     </div>
     <div class="nav-links">
         <div>
-            <header id="log-out" >
+            <header id="logout">
                 <p id="user-info"></p>
                 <button>Log out</button>
                 <button>Apua</button>
             </header>
         </div>
     </div>
-
+    </div>
 </nav>
 
+
+
 <section id="card">
-    <div>
-    <div class="dropdown">
-        <button class="dropbtn">
-            <strong>Ostoslista</strong>
-        </button>
-        <div class="dropdown-content">
-           <form>
-               luo uusi lista: <input type="text">
-               <br>
-               <input type="submit" value="Submit">
-           </form>
-            <a href="">Lista1</a>
-            <a href="">Lista2</a>
-            <a href="">Lista3</a>
-        </div>
+    <div class="myDIV">
+        <button class="btn nav-links" onclick="viin()">Listat</button>
+        <button class="btn" onclick="viin2()">Kaupat</button>
 
     </div>
-        <div class="dropdown">
-            <button class="dropbtn">
-                <strong>Kaupat</strong>
-            </button>
-            <div class="dropdown-content">
-                <form>
-                    lisää kauppa: <input type="text">
-                    <br>
-                    <input type="submit" value="Submit">
-                </form>
-                <a href="">Selaa Alennuksia</a>
-                <a href="">K-Market</a>
-                <a href="">Alepa</a>
-                <a href="">S-Market</a>
-            </div>
-        </div>
-    </div>
-    </div>
+    <div id="content1">
+        <h1>MOi miten menee</h1>
 
+    </div>
+    <div id="content2">
+        <h2>Ei hyvin</h2>
+
+    </div>
 </section>
 
 <footer>
@@ -94,7 +77,7 @@
     </div>
 
 </footer>
-
+<script src="./js/testi.js"></script>
 <script src="js/main.js"> </script>
 </body>
 </html>

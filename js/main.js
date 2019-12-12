@@ -17,6 +17,36 @@ hampurilainen.addEventListener("click", () => {
     navLinks.classList.toggle("open");
 });
 
+// Hidden
+
+
+
+const lista = document.getElementById("btn1");
+const alen = document.getElementById("btn2");
+
+function viin() {
+    const content1 = document.getElementById("content1");
+    const content2 = document.getElementById("content2");
+    if(content1.style.display === "none"){
+        content1.style.display = "block";
+        content2.style.display = "none";
+    }else{
+        content1.style.display ="none";
+    }
+}
+function viin2() {
+    const content1 = document.getElementById("content1");
+    const content2 = document.getElementById("content2");
+    if(content2.style.display === "none"){
+        content2.style.display = "block";
+        content1.style.display = "none";
+    }else{
+        content2.style.display ="none";
+    }
+}
+
+
+
 
 loginForm.addEventListener('submit', async (evt) => {
     evt.preventDefault();

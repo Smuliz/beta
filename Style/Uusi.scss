@@ -1,5 +1,26 @@
 @import "Main.scss";
 
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+    div {
+      display: none;
+    }
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active, .btn:hover {
+  background-color: #666;
+  color: white;
+
+}
+p {
+  display: none;
+}
 .dropbtn {
   background-color: color(primary);
   color: white;
@@ -8,14 +29,21 @@
   border: none;
 }
 
+
 .dropdown {
   position: relative;
   display: inline-block;
 }
+#content1{
+  display: none;
+}
+#content2{
+  display: none;
+}
 
 .dropdown-content {
-  display: none;
-  position: absolute;
+
+
   background-color: color(primary-dark);
   min-width: 160px;
   z-index: 1;
@@ -35,4 +63,5 @@
 .dropdown:hover .dropdown-content{
   display: block;
 }
+
 
