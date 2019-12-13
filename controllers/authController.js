@@ -8,7 +8,7 @@ const userModel = require("../models/userModel");
 const login = (req,res) => {
     
     passport.authenticate('local', {session:false}, (err, user, info) => {
-        console.log("Authcontroller Login", user);
+        console.log("Authcontroller Login funktio", user, info);
         if (err || !user) {
             console.log("Login error", err, user);
             return res.status(400).json({

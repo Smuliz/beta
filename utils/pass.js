@@ -43,12 +43,16 @@ passport.use(
              //return done(null,jwtPayload);
             try {
                 const [user] = await userModel.getUser(jwtPayload.Sahkoposti);
-                if (user === undefined) {
+                console.log("USER", user);
+                if ([user] === undefined) {
+                    console.log("ei toimi");
                     return done(null, false);
                 } else {
+                    console.log("jwt toimii");  
                     return done(null, {...user});
                 }
             } catch (err) {
+                console.log("error in jwt")
                 return done(err) 
                     
                 

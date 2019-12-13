@@ -22,14 +22,15 @@ loginForm.addEventListener("submit", async evt => {
   const fetchOptions = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("token")
     },
 
     body: JSON.stringify(data)
   };
 
   const response = await fetch(url + "/auth/login", fetchOptions);
-  //console.log(response);
+  console.log("LOGIN RESPONSE", response);
   const json = await response.json();
   //console.log('login response', json);
   if (!json.user.Sahkoposti) {
@@ -78,7 +79,8 @@ addUserForm.addEventListener("submit", async evt => {
   const fetchOptions = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("token")
     },
     body: JSON.stringify(data) //JSON.stringify
   };
@@ -123,8 +125,8 @@ const getAlennus = async () => {
   try {
     const options = {
       headers: {
-        'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
-      },
+        Authorization: "Bearer " + sessionStorage.getItem("token")
+      }
     };
     const response = await fetch(url + "/alennus", options);
     console.log(response);
@@ -136,7 +138,6 @@ const getAlennus = async () => {
   }
 };
 getAlennus();
-
 
 //Create alennus list
 const createAleList = items => {
@@ -220,7 +221,8 @@ const createShoppingCard = items => {
     delButton.innerHTML = "Delete";
     delButton.addEventListener("click", async () => {
       const fetchOptions = {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {Authorization: "Bearer " + sessionStorage.getItem("token")}
       };
       try {
         const response = await fetch(
@@ -293,7 +295,8 @@ const createShopsList = items => {
     delButton.innerHTML = "Delete";
     delButton.addEventListener("click", async () => {
       const fetchOptions = {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {Authorization: "Bearer " + sessionStorage.getItem("token")}
       };
       try {
         const response = await fetch(
@@ -369,7 +372,10 @@ addForm.addEventListener("submit", async evt => {
   const fetchOptions = {
     method: "POST",
     body: JSON.stringify(fd),
-    headers: { "Content-Type": "application/json" }
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("token")
+    }
   };
   //console.log(fetchOptions);
   const response = await fetch(url + "/tuote", fetchOptions);
@@ -385,7 +391,8 @@ createListaForm.addEventListener("submit", async evt => {
   const fetchOptions = {
     method: "POST",
     body: JSON.stringify(fd),
-    headers: { "Content-Type": "application/json" }
+    headers: { "Content-Type": "application/json",
+    Authorization: "Bearer " + sessionStorage.getItem("token") }
   };
   //console.log("lista create fetchOptions", fetchOptions);
   const response = await fetch(url + "/lista", fetchOptions);
@@ -403,7 +410,8 @@ modForm.addEventListener("submit", async evt => {
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
     credentials: "same-origin", // include, *same-origin, omit
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("token")
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: "follow", // manual, *follow, error

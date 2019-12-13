@@ -7,23 +7,26 @@ const tuote_list_get = async (req,res) => {
 };
 const tuote_get = async (req,res) => {
   const tuote = await tuoteModel.getTuote(req.params.id);
-  console.log(tuote[0]);
+  // console.log(tuote[0]);
   await res.json(tuote[0]);
 };
 const tuote_create_post = async (req, res) => {
   try {
     const params = [
       req.body.name,
+      1,
 
     ];
-    console.log('create', params);
+    // console.log('create', params);
     const result = await tuoteModel.addTuote(params);
-    console.log(result);
+    // console.log(result);
     const params2 = [
       req.body.maara,
       result.insertId,
-      req.body.ListaNumero,
+      1
+      // req.body.ListaNumero,
     ];
+    // console.log('kakkonen', params2);
     const result2 = await tuoteModel.addMaara(params2);
     await res.json({message: 'upload ok'});
   } catch (e) {
@@ -40,17 +43,17 @@ const tuote_update = async (req,res) =>{
         req.body.tuoteId,
 
     ];
-    console.log(params,'mopp');
+    // console.log(params,'mopp');
     const result = await tuoteModel.updateTuote(params);
-    console.log(result,'Täätätätä');
+    // console.log(result,'Täätätätä');
     const params2 = [
       req.body.maara,
         req.body.tuoteId,
 
     ];
-    console.log(params,'TÄT');
+    // console.log(params,'TÄT');
     const result2 = await tuoteModel.updateMaara(params2);
-    console.log(result2,'mokookok');
+    // console.log(result2,'mokookok');
     await res.json({message: 'upload ok'});
   } catch (e) {
     console.log('exif error', e);
